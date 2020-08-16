@@ -84,4 +84,4 @@ while t<150:#sum([min(1-p[i],p[i]) for i in range(n)])>eps:
   t+=1
   if t%20==0:
     print(t)
-print([np.argmax(i) for i in p.reshape([m,n])]-structure)
+print(np.array([np.argmax(i) for i in p.reshape([m,n])])==structure)
