@@ -66,7 +66,7 @@ x=np.array(x)
 elite=np.argwhere(np.array(score)>=np.percentile(sorted(score),100-rho))
 p=np.sum(x[elite].reshape([len(elite),m,n]),axis=0)/len(elite)+jitter*np.random.random([m,n])
 t=1
-while t<150:#sum([min(1-p[i],p[i]) for i in range(n)])>eps:
+while t<100:#sum([min(1-p[i],p[i]) for i in range(n)])>eps:
   x=[]
   score=[]
   for _ in range(N):
@@ -83,5 +83,4 @@ while t<150:#sum([min(1-p[i],p[i]) for i in range(n)])>eps:
   p=np.sum(x[elite].reshape([len(elite),m,n]),axis=0)/len(elite)+jitter*np.random.random([m,n])
   t+=1
   if t%20==0:
-    print(t)
-print(np.array([np.argmax(i) for i in p.reshape([m,n])])==structure)
+    print(t,print(sum((np.array([np.argmax(i) for i in p.reshape([m,n])])==structure)[0])/m))
